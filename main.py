@@ -8,7 +8,8 @@ rules = """
 """
 while True:
 	print(rules)
-	n = input("\n Enter Number ")
+	n = input("\n Enter Number: ")
 
-elif n == 0:
-	print("Thank you for using the budget tool")
+	if n == 0:
+		print("Thank you for using the budget tool")
+		break
