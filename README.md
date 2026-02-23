@@ -8,7 +8,10 @@ PROJCET PLAN
 - Warns user when their expenses exceed the budget 
 - Prints a financial report
 
-Phase 1: Requirements Breakdown 
+## Flow Chart
+![[Expense tracker flowchart.jpg]]
+
+## Phase 1: Requirements Breakdown 
 - Prompt user to enter buddget that shall be initialized as budget_start
 - Ensure the budget amount is numeric, non negative and maybe above a specific amount such as 15k to make it more realistic 
 - Prints a final financial report. 
