@@ -9,7 +9,7 @@ PROJCET PLAN
 - Prints a financial report
 
 ## Flow Chart
-![Flow Chart](Expense tracker flowchart.jpg)
+![Flow Chart](Expense%20tracker%20flowchart.jpg)
 
 ## Phase 1: Requirements Breakdown 
 - Prompt user to enter buddget that shall be initialized as budget_start
