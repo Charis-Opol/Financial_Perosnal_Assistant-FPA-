@@ -1,27 +1,31 @@
 import budget
 import blogs
 
-cum_expense = 0
 
-budget_ = budget.budget_start()
-transaction = blogs.transaction()
+def calculate_cumulative(transaction_list):
+    total = 0
+    # Assuming transaction_list is a list of dictionaries: [{'name': 'item', 'amount': 10}, ...]
+    for item in transaction_list:
+        total += item['amount']
+    return total
 
-def index_transactions(transaction):
-    for i in range(len(transaction)):
-        print(f"{transaction.Transaction_name[i]}: {transaction.amount[i]}")
+def display_expense(current_budget, transaction_list):
+    cum_expense = calculate_cumulative(transaction_list)
+    remaining = current_budget - cum_expense
+    
+    print(f"\n--- Financial Summary ---")
+    print(f"Your cumulative expense is: UGX{cum_expense}")
+    print(f"You are remaining with: UGX{remaining}")
 
-
-def cummulative_expense(transaction, cum_expense):
-    for i in range(len(transaction)):
-        cum_expense = cum_expense + transaction.amount[i]
-    return cum_expense
-
-def display_expense(cum_expense):
-    print(f"Your cumulative expense is {cum_expense}")
-    print(f"You are remaining with {budget_ - cum_expense} in your budget")
-
-def check_budget(cum_expense, budget_):
-    if cum_expense > budget_:
-        print("You have exceeded your budget")
+def check_budget(current_budget, transaction_list):
+    cum_expense = calculate_cumulative(transaction_list)
+    
+    if cum_expense > current_budget:
+        print("\n⚠️ Alert: You have exceeded your budget!")
     else:
-        print("You are within your budget")
+        print("\n Success: You are within your budget.")
+
+def index_transactions(transaction_list):
+    print("\n--- Transaction History ---")
+    for item in transaction_list:
+        print(f"{item['name']}: ${item['amount']}")
