@@ -1,7 +1,7 @@
 import unittest
 from budget import BudgetValidator, BudgetService
 from blogs import TransactionManager, Transaction
-from main import BudgetTracker, ConsoleBudgetDisplay
+from fiscaloversite import BudgetTracker, ConsoleBudgetDisplay
 
 
 # --- Fakes so we avoid real user input ---
