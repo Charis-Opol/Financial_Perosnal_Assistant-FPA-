@@ -49,11 +49,12 @@ class BudgetTracker:
     def cumulative_expense(self):
         return sum(t.amount for t in self.transaction_manager.transactions)
 
+    def is_over_budget(self) -> bool:
+        return self.cumulative_expense() > self.current_budget
+
     def remaining(self):
         return self.current_budget - self.cumulative_expense()
 
-    def is_over_budget(self):
-        return self.cumulative_expense() > self.current_budget
 
 
 class ConsoleBudgetDisplay:
