@@ -26,19 +26,23 @@ class Transaction:
         self.name = name
         self.amount = amount
 
+
 class TransactionManager:
     def __init__(self):
         self.transactions = []
 
-    def add(self):
-        name = input("What do you want to spend on? ")
-        amount = int(input("Amount: "))
+    def add(self, name, amount):
         self.transactions.append(Transaction(name, amount))
 
     def view(self):
         for t in self.transactions:
-            print(f"{t.name} - UGX {t.amount}")
+            print(f"{t.name} - ${t.amount}")
+
 
 manager = TransactionManager()
-manager.add()
+
+name = input("What do you want to spend on? ")
+amount = int(input("Amount: "))
+
+manager.add(name, amount)
 manager.view()
