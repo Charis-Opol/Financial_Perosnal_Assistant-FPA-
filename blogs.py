@@ -35,8 +35,8 @@ class TransactionManager:
         self.transactions.append(Transaction(name, amount))
 
     def view(self):
-        for t in self.transactions:
-            print(f"{t.name} - ${t.amount}")
+        for transactions in self.transactions:
+            print(f"{transactions.name} - shs.{transactions.amount}")
 
 
 manager = TransactionManager()
