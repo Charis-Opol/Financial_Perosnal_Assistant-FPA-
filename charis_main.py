@@ -34,19 +34,19 @@ class TestBudgetTracker(unittest.TestCase):
         self.tracker.setup()
 
     def test_cumulative_expense(self):
-        self.assertEqual(self.tracker.cumulative_expense(), 310000)
+        self.assertEqual(self.tracker.cumulative_expense, 310000)   # removed ()
 
     def test_remaining(self):
-        self.assertEqual(self.tracker.remaining(), 190000)
+        self.assertEqual(self.tracker.remaining, 190000)            # removed ()
 
     def test_within_budget(self):
-        self.assertFalse(self.tracker.is_over_budget())
+        self.assertFalse(self.tracker.is_over_budget)               # removed ()
 
     def test_over_budget(self):
         budget_service = BudgetService(FakeBudgetInput(), BudgetValidator())
         tracker = BudgetTracker(budget_service, FakeTransactionManager([Transaction("Laptop", 600000)]))
         tracker.setup()
-        self.assertTrue(tracker.is_over_budget())
+        self.assertTrue(tracker.is_over_budget)                     # removed ()
 
 
 if __name__ == '__main__':

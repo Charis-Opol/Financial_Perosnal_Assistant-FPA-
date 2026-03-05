@@ -36,35 +36,41 @@ import blogs
 
 class BudgetTracker:
     def __init__(self, budget_service: budget.BudgetService, transaction_manager: blogs.TransactionManager):
-        self.budget_service = budget_service
-        self.transaction_manager = transaction_manager
-        self.current_budget = None
+        self._budget_service = budget_service          # private: prefix with _
+        self._transaction_manager = transaction_manager  # private: prefix with _
+        self._current_budget = None                    # private: prefix with _
 
     def setup(self):
-        self.current_budget = self.budget_service.get_budget()
+        self._current_budget = self._budget_service.get_budget()
 
     def add_transaction(self):
-        self.transaction_manager.add()
+        self._transaction_manager.add()
 
-    def cumulative_expense(self):
-        return sum(t.amount for t in self.transaction_manager.transactions)
+    @property
+    def cumulative_expense(self) -> float:             # getter: no () needed on call
+        return sum(t.amount for t in self._transaction_manager.transactions)
 
+    @property
+    def remaining(self) -> float:                      # immutable: no setter defined
+        return self._current_budget - self.cumulative_expense
+
+    @property
     def is_over_budget(self) -> bool:
-        return self.cumulative_expense() > self.current_budget
+        return self.cumulative_expense > self._current_budget
 
-    def remaining(self):
-        return self.current_budget - self.cumulative_expense()
-
+    @property
+    def current_budget(self) -> float:                 # read-only view of budget
+        return self._current_budget
 
 
 class ConsoleBudgetDisplay:
     def show_summary(self, tracker: BudgetTracker):
         print("\n--- Financial Summary ---")
-        print(f"Cumulative expense: UGX{tracker.cumulative_expense()}")
-        print(f"Remaining: UGX{tracker.remaining()}")
+        print(f"Cumulative expense: UGX{tracker.cumulative_expense}")  # no ()
+        print(f"Remaining: UGX{tracker.remaining}")                    # no ()
 
     def show_status(self, tracker: BudgetTracker):
-        if tracker.is_over_budget():
+        if tracker.is_over_budget:                                     # no ()
             print("⚠️  Alert: You have exceeded your budget!")
         else:
             print("✅ Success: You are within your budget.")
