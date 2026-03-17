@@ -3,7 +3,7 @@
 from budget         import BudgetValidator, BudgetService, BudgetInput
 from blogs          import TransactionManager
 from fiscaloversite import BudgetTracker, ConsoleBudgetDisplay
-from summary        import Transaction, ReportCalculator, ReportFormatter, ConsoleReportPrinter, FinancialReport
+from summary        import Transaction, ReportCalculator, FinancialReport
 
 MENU = """
     1. Exit
@@ -24,8 +24,6 @@ class App:
     def __init__(self):
         self._tracker   = BudgetTracker(BudgetService(BudgetInput(), BudgetValidator()), TransactionManager())
         self._display   = ConsoleBudgetDisplay()
-        self._formatter = ReportFormatter()
-        self._printer   = ConsoleReportPrinter()
 
     def run(self) -> None:
         while True:
