@@ -48,7 +48,7 @@ class BudgetTracker:
 
     @property
     def cumulative_expense(self) -> float:             # getter: no () needed on call
-        return sum(t.amount for t in self._transaction_manager.transactions)
+        return sum(transactions.amount for transactions in self._transaction_manager.transactions)
 
     @property
     def remaining(self) -> float:                      # immutable: no setter defined

@@ -62,8 +62,8 @@ class App:
 
     def _show_summary(self):
         transactions = [
-            Transaction(t.name, t.amount)
-            for t in self._tracker._transaction_manager.transactions
+            Transaction(transactions.name, transactions.amount)
+            for transactions in self._tracker._transaction_manager.transactions
         ]
         FinancialReport(
             ReportCalculator(self._tracker.current_budget, transactions),
